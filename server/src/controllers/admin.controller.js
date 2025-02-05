@@ -90,12 +90,14 @@ export const createAlbum = async ( req, res, next ) => {
 
 export const deleteAlbum = async ( req, res, next ) => {
     try {
-        
-    } catch (error) {
-        console.log("Error in delete Album Controller", error);
-        next(error);
-        
-    }
+		const { id } = req.params;
+		await Song.deleteMany({ albumId: id });
+		await Album.findByIdAndDelete(id);
+		res.status(200).json({ message: "Album deleted successfully" });
+	} catch (error) {
+		console.log("Error in deleteAlbum", error);
+		next(error);
+	}
 }
 
 export const checkAdmin = ( req, res ) => {

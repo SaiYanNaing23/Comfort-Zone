@@ -19,6 +19,13 @@ export interface Album {
     songs : Song[];
 }
 
+export interface Stats {
+    totalSongs : number;
+    totalAlbums : number;
+    totalUsers : number;
+    totalArtists : number;
+}
+
 export interface MusicStore {
     albums : Album[];
     songs : Song[];
@@ -28,12 +35,18 @@ export interface MusicStore {
     madeForYouSongs : Song[];
     featuredSongs : Song[];
     trendingSongs : Song[];
+    stats : Stats;
 
     fetchingAlbums : () => Promise<void>;
     fetchAlbumById : (id: string) => Promise<void>;
     fetchMadeForYouSongs : () => Promise<void>;
     fetchFeaturedSongs : () => Promise<void>;
     fetchTrendingSongs : () => Promise<void>;
+    fetchStats : () => Promise<void>;
+    fetchSongs : () => Promise<void>;
+    deleteSong : (id: string) => Promise<void>;
+    deleteAlbum : (id: string) => Promise<void>;
+    createSong : (formData : FormData) => Promise<void>;
 }
 
 export interface ChatStore {

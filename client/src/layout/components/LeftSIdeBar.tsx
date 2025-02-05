@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import { useMusicStore } from "@/stores/useMusicStore"
 import { SignedIn } from "@clerk/clerk-react"
 
-import { HomeIcon, Library, MessageCircle } from "lucide-react"
+import { BotMessageSquare, HomeIcon, Library, MessageCircle } from "lucide-react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 
@@ -44,6 +44,18 @@ const LeftSIdeBar = () => {
                             <span className="hidden md:inline" >Messages</span>
                         </Link>
                     </SignedIn>
+
+                    {/* <SignedIn> */}
+                        <Link to={"/chat-bot"}
+                            className={cn(buttonVariants({
+                                variant : "ghost",
+                                className : "w-full justify-start text-white hover:bg-zinc-800"
+                            }))}
+                        >
+                            <BotMessageSquare className="mr-2 size-5" />
+                            <span className="hidden md:inline" >Chat With Bot</span>
+                        </Link>
+                    {/* </SignedIn> */}
                 </div>
             </div>
 

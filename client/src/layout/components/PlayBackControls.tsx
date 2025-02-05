@@ -4,8 +4,11 @@ import { usePlayerStore } from "@/stores/usePlayerStore"
 import { formatDuration } from "@/utils/DateFormatter"
 import { Laptop2, ListMusic, Mic2, Pause, Play, Repeat, Shuffle, SkipBack, SkipForward, Volume1, VolumeOff } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const PlayBackControls = () => {
+
+    const navigate = useNavigate()
 
     const { currentSong, isPlaying, togglePlay, playNext, playPrevious } = usePlayerStore()
 
@@ -13,6 +16,7 @@ const PlayBackControls = () => {
     const [ currentTime, setCurrentTime ] = useState(0)
     const [ duration, setDuration ] = useState(0)
     const audioRef = useRef<HTMLAudioElement | null>(null)
+    const [showLyrics, setShowLyrics] = useState<boolean>(true)
 
     useEffect(()=> {
         audioRef.current = document.querySelector('audio')
@@ -41,6 +45,15 @@ const PlayBackControls = () => {
     const handleSeek = (value : number[]) => {
         if(audioRef.current){
             audioRef.current.currentTime = value[0]
+        }
+    }
+
+    const checkLyrics = () => {
+        setShowLyrics(!showLyrics)
+        if(showLyrics){
+            navigate("/lyrics")
+        }else{
+            navigate("/")
         }
     }
     
@@ -128,8 +141,8 @@ const PlayBackControls = () => {
             </div>
             {/* volume controls */}
             <div className='hidden sm:flex items-center gap-4 min-w-[180px] w-[30%] justify-end'>
-                <Button size='icon' variant='ghost' className='hover:text-white text-zinc-400'>
-                    <Mic2 className='h-4 w-4' />
+                <Button onClick={checkLyrics} size='icon' variant='ghost' className='hover:text-white text-zinc-400'>
+                        <Mic2 className='h-4 w-4' />
                 </Button>
                 <Button size='icon' variant='ghost' className='hover:text-white text-zinc-400'>
                     <ListMusic className='h-4 w-4' />

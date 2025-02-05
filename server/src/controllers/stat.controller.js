@@ -2,7 +2,7 @@ import { Song } from "../models/song.model.js";
 import { Album } from "../models/album.model.js";
 import { User } from "../models/user.model.js";
 
-export const getStats = async ( req, resizeBy, next ) => {
+export const getStats = async ( req, res, next ) => {
     try {
         const [ totalSongs, totalAlbums, totalUsers, uniqueArtists ] = await Promise.all([
             Song.countDocuments(),

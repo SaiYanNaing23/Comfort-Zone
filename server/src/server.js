@@ -13,6 +13,7 @@ import songRoutes from './routes/songs.routes.js';
 import { initializeSocket } from './lib/socket.js';
 import adminRoutes from './routes/admin.routes.js';
 import albumRoutes from './routes/albums.routes.js';
+import chatbotRoutes from './routes/chatbot.routes.js';
 
 // Configuration
 dotenv.config();
@@ -47,6 +48,7 @@ app.use("/api/songs", songRoutes );
 app.use("/api/stats", statRoutes );
 app.use("/api/admin", adminRoutes );
 app.use("/api/albums", albumRoutes );
+app.use("/api/chat-bot", chatbotRoutes)
 
 // Error Handling
 app.use((err, req, res, next) => {

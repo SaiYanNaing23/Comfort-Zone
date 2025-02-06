@@ -1,6 +1,6 @@
 <h1 align="center">Realtime Comfort Zone Music Application ✨</h1>
 
-![Demo App](/frontend/public/screenshot-for-readme.png)
+![Demo App](/client/public/screenshot-for-readme.png)
 
 About Features:
 

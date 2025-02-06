@@ -12,8 +12,8 @@ const TopBar = () => {
     return (
         <div className="flex items-center justify-between p-4 top-0 bg-zinc-900/75 z-10 backdrop-blur-md " >
             <div className='flex gap-2 items-center'>
-				<img src='/spotify.png' className='size-8' alt='Spotify logo' />
-				Spotify
+				<img src='/comfort_zone.png' className='size-8' alt='Spotify logo' />
+				Comfort Zone
 			</div>
 
         <div className="flex items-center gap-4" >

@@ -15,7 +15,7 @@ About Features:
 
 Tech And SKills: 
 
-- Full Stack MERN Netflix Clone
+- Full Stack MERN Web App
 - Shadcn for dynamic layout UI
 - React.js, Node.js, MongoDB, Express.js, typescript, socket.io(for real-time data)
 - axios for fetching

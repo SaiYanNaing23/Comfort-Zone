@@ -9,6 +9,7 @@ import AdminPage from "./pages/admin/AdminPage"
 import LyricsPage from "./layout/components/LyricsPage"
 import ChatBotPage from "./pages/chat-bot/ChatBotPage"
 import { Toaster } from 'react-hot-toast'
+import NotFoundPage from "./pages/404/NotPageFound"
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/albums/:albumId" element={ <AlbumPage/> } />
           <Route path="/lyrics" element={<LyricsPage/>} />
           <Route path="/chat-bot" element={<ChatBotPage/>} />
+          <Route path='*' element={<NotFoundPage />} />
         </Route>
       </Routes>
       <Toaster/>

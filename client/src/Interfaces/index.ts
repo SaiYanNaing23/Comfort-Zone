@@ -1,3 +1,9 @@
+export interface User {
+	_id: string;
+	clerkId: string;
+	fullName: string;
+	imageUrl: string;
+}
 export interface Song {
     _id : string;
     title : string;
@@ -49,12 +55,31 @@ export interface MusicStore {
     createSong : (formData : FormData) => Promise<void>;
 }
 
+export interface Message {
+    _id : string;
+    senderId : string;
+    receiverId : String;
+    content : string;
+    createdAt : string;
+    updatedAt : string;
+}
 export interface ChatStore {
     users : any[],
     isLoading : boolean,
     error : string | null,
-
+    socket : any;
+    isConnected : boolean;
+    onlineUsers : Set<string>;
+    userActivities : Map<string, string>;
+    messages : Message[];
+    selectedUser : User | null;
+    
     fetchUsers : () => Promise<void>;
+    initSocket : (userId : string) => void;
+    disconnectSocket : () => void;
+    sendMessage : ( receiverId: string, senderId : string, content : string) => void;
+    fetchMessages : (userId : string) => Promise<void>;
+    setSelectedUser: ( user: User | null ) => void;
 }
 
 export interface AuthStore {

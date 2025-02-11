@@ -17,6 +17,8 @@ const PlayBackControls = () => {
     const [ duration, setDuration ] = useState(0)
     const audioRef = useRef<HTMLAudioElement | null>(null)
     const [showLyrics, setShowLyrics] = useState<boolean>(true)
+    // const [ clickShuffle, setClickShuffle] = useState<boolean>(false);
+    // const [ clickRepeat, setClickRepeat] = useState<boolean>(false);
 
     useEffect(()=> {
         audioRef.current = document.querySelector('audio')
@@ -56,6 +58,11 @@ const PlayBackControls = () => {
             navigate("/")
         }
     }
+    // https://www.google.com/search?q=Taylor
+
+    const redirectGoogle = (value : string) => {
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(value)}`, "_blank")
+    }
     
     return <footer className="h-20 sm:h-24 bg-zinc-900 border-t border-zinc-800 px-4" >
         <div className="flex justify-between items-center h-full max-w-[1800px] mx-auto " >
@@ -69,10 +76,10 @@ const PlayBackControls = () => {
                             className='w-14 h-14 object-cover rounded-md'
                         />
                         <div className='flex-1 min-w-0'>
-                            <div className='font-medium truncate hover:underline cursor-pointer'>
+                            <div onClick={() => redirectGoogle(currentSong.title)} className='font-medium truncate hover:underline cursor-pointer'>
                                 {currentSong.title}
                             </div>
-                            <div className='text-sm text-zinc-400 truncate hover:underline cursor-pointer'>
+                            <div onClick={() => redirectGoogle(currentSong.artist)} className='text-sm text-zinc-400 truncate hover:underline cursor-pointer'>
                                 {currentSong.artist}
                             </div>
                         </div>
